@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | Little Sprouts Academy</title>
-<meta name="description" content="Articles on autism, parenting, early intervention and therapy from the specialists at Little Sprouts Academy.">
+<title>Blog | GEIA Inclusive Academy</title>
+<meta name="description" content="Articles on autism, parenting, early intervention and therapy from the specialists at GEIA Inclusive Academy.">
+<link rel="icon" type="image/png" href="images/geia logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,27 +15,30 @@
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/geia logo.png" alt="GEIA Inclusive Academy logo" style="width:130px; height:130px; object-fit:contain;">
+      </span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="index.html" class="brand">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="images/geia logo.png" alt="Little Sprouts Academy logo" style="width:130px; height:130px; object-fit:contain;">
-        </span>
-      </a></li>
       <li><a href="blog.html">Blog</a></li>
+       <li><a href="disclosure.html">MandatoryPublicDisclosure</a></li>
       <li><a href="contact.html">Contact</a></li>
+    
     </ul>
     <div class="nav-actions">
       <a href="contact.html" class="btn btn-gold">Book Your Slot</a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </nav>
+  <div class="nav-overlay"></div>
 </header>
 
 <main id="main">
 
-  <section class="page-hero">
+  <section class="page-hero" style="background-image: url('images/img1.png');">
     <div class="container">
       <div class="breadcrumb"><a href="index.html">Home</a> / <span>Blog</span></div>
       <span class="eyebrow">Notes from our specialists</span>
@@ -42,7 +46,7 @@
       <p class="lead" style="max-width:640px; margin:0 auto;">Practical guidance on autism, early intervention, therapy and family life &mdash; written by the team that lives it every day.</p>
     </div>
     <svg class="growth-path" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,30 C 200,60 300,0 480,25 S 760,55 960,20 S 1260,0 1440,30" fill="none" stroke="#D98C22" stroke-width="3"/>
+      <path d="M0,30 C 200,60 300,0 480,25 S 760,55 960,20 S 1260,0 1440,30" fill="none" stroke="#d4a95e" stroke-width="3"/>
     </svg>
   </section>
 
@@ -78,7 +82,7 @@
 
       <div class="blog-layout">
         <div>
-          <div class="grid-2" style="margin-bottom:8px;">
+          <div class="blog-grid" style="margin-bottom:8px;">
 
             <article class="blog-card reveal" data-category="therapy">
               <div class="thumb"><img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=700&auto=format&fit=crop" alt="A therapist reading a picture book with a toddler"></div>
@@ -140,12 +144,73 @@
               </div>
             </article>
 
+            <article class="blog-card reveal" data-category="parenting">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=700&auto=format&fit=crop" alt="A child playing with colourful toys"></div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="cat">Parenting</span><span>6 min read</span></div>
+                <h3>Bedtime Routines for Children with Autism</h3>
+                <p>A calm, predictable wind-down can transform your evenings.</p>
+                <a href="#" class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="blog-card reveal" data-category="therapy">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=700&auto=format&fit=crop" alt="Speech therapy session"></div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="cat">Therapy</span><span>5 min read</span></div>
+                <h3>Augmentative Communication: Tools That Give a Voice</h3>
+                <p>From PECS to high-tech AAC devices — what parents should know.</p>
+                <a href="#" class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="blog-card reveal" data-category="autism">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=700&auto=format&fit=crop" alt="Child painting with bright colours"></div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="cat">Autism</span><span>4 min read</span></div>
+                <h3>Understanding Stimming: What It Is and Why It Helps</h3>
+                <p>Self-regulatory behaviour explained with compassion.</p>
+                <a href="#" class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="blog-card reveal" data-category="education">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=700&auto=format&fit=crop" alt="Child reading a book"></div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="cat">Education</span><span>6 min read</span></div>
+                <h3>Choosing the Right School for Your Neurodivergent Child</h3>
+                <p>A checklist for parents navigating school admissions.</p>
+                <a href="#" class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="blog-card reveal" data-category="stories">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1604644401890-0bd678c83788?q=80&w=700&auto=format&fit=crop" alt="Child smiling with a teacher"></div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="cat">Success Stories</span><span>4 min read</span></div>
+                <h3>Nila's First Words: A Mother's Diary</h3>
+                <p>After 18 months of silence, three syllables changed everything.</p>
+                <a href="#" class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="blog-card reveal" data-category="events">
+              <div class="thumb"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=700&auto=format&fit=crop" alt="Conference hall with stage"></div>
+              <div class="blog-body">
+                <div class="blog-meta"><span class="cat">Events</span><span>3 min read</span></div>
+                <h3>GEIA Annual Family Day &mdash; Save the Date!</h3>
+                <p>Join us for a day of connection, celebration and learning.</p>
+                <a href="#" class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
           </div>
 
           <div class="pagination">
-            <button class="active">1</button>
-            <button>2</button>
-            <button>3</button>
+            <button class="prev" disabled>&larr; Prev</button>
+            <button class="page-num active" data-page="1">1</button>
+            <button class="page-num" data-page="2">2</button>
+            <button class="page-num" data-page="3">3</button>
             <button class="next">Next &rarr;</button>
           </div>
         </div>
@@ -154,30 +219,30 @@
         <aside>
           <div class="sidebar-block reveal">
             <h4>Recent Posts</h4>
-            <div class="mini-post">
+            <a href="#" class="mini-post">
               <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=150&auto=format&fit=crop" alt="">
               <div><h5>Understanding Autism: A Guide for Families</h5><span>Jan 8, 2026</span></div>
-            </div>
-            <div class="mini-post">
+            </a>
+            <a href="#" class="mini-post">
               <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=150&auto=format&fit=crop" alt="">
               <div><h5>Why Early Intervention Changes Everything</h5><span>Dec 29, 2025</span></div>
-            </div>
-            <div class="mini-post">
+            </a>
+            <a href="#" class="mini-post">
               <img src="https://images.unsplash.com/photo-1596496181861-5fca82301bbb?q=80&w=150&auto=format&fit=crop" alt="">
               <div><h5>Sensory Overload: Recognising the Signs</h5><span>Dec 14, 2025</span></div>
-            </div>
+            </a>
           </div>
 
           <div class="sidebar-block reveal">
             <h4>Popular Articles</h4>
-            <div class="mini-post">
+            <a href="#" class="mini-post">
               <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=150&auto=format&fit=crop" alt="">
               <div><h5>Arjun's Journey: From Silence to Storytelling</h5><span>2.4k reads</span></div>
-            </div>
-            <div class="mini-post">
+            </a>
+            <a href="#" class="mini-post">
               <img src="https://images.unsplash.com/photo-1591382696684-e1a0193fa877?q=80&w=150&auto=format&fit=crop" alt="">
               <div><h5>Supporting Children at Home: Five Small Habits</h5><span>1.9k reads</span></div>
-            </div>
+            </a>
           </div>
 
           <div class="sidebar-block reveal">
@@ -211,7 +276,7 @@
       <div class="footer-brand">
         <a href="index.html" class="brand" style="color:#fff;">
           <span class="brand-mark" aria-hidden="true" style="width:120px; height:120px; border-radius:24px;">
-            <img src="images/geia logo.png" alt="Little Sprouts Academy logo" style="width:120px; height:120px; object-fit:contain;">
+            <img src="images/geia logo.png" alt="GEIA Inclusive Academy logo" style="width:120px; height:120px; object-fit:contain;">
           </span>
         </a>
         <p>Compassionate education and therapy for children with autism and individual learning needs across Kerala.</p>
@@ -228,6 +293,7 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="disclosure.html">Disclosure</a></li>
         </ul>
       </div>
       <div>
@@ -250,7 +316,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Little Sprouts Academy. All rights reserved.</span>
+      <span>&copy; 2026 GEIA Inclusive Academy. All rights reserved.</span>
       <div class="legal-links">
         <a href="#">Accessibility Statement</a>
         <a href="#">Privacy Policy</a>

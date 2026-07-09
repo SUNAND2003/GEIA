@@ -7,19 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Mobile nav toggle ---------- */
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.nav');
+  const overlay = document.querySelector('.nav-overlay');
+  const closeNav = () => {
+    nav.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.remove('show');
+  };
   if (navToggle && nav) {
     navToggle.addEventListener('click', () => {
       const isOpen = nav.classList.toggle('open');
       navToggle.classList.toggle('open', isOpen);
       navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (overlay) overlay.classList.toggle('show', isOpen);
     });
     nav.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeNav);
     });
+    if (overlay) overlay.addEventListener('click', closeNav);
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -32,8 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => {
+      if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-down') && !el.classList.contains('reveal-scale') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right') && !el.classList.contains('reveal-fade')) {
+        el.classList.add('reveal-up');
+      }
+      io.observe(el);
+    });
   } else {
     revealEls.forEach(el => el.classList.add('in'));
   }
@@ -119,18 +129,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Blog category filters ---------- */
-  const filterBtns = document.querySelectorAll('.chip-filters button');
+  const filterBtns = document.querySelectorAll('.chip-filters button, .tag-cloud a');
   const blogCards = document.querySelectorAll('[data-category]');
   if (filterBtns.length && blogCards.length) {
     filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const cat = btn.getAttribute('data-filter');
+        const cat = btn.getAttribute('data-filter') || btn.textContent.trim().toLowerCase();
         blogCards.forEach(card => {
           const show = cat === 'all' || card.getAttribute('data-category') === cat;
-          card.style.display = show ? '' : 'none';
+          card.dataset.filtered = show ? 'true' : 'false';
         });
+        if (typeof showPage === 'function') showPage(1);
       });
     });
   }
@@ -142,9 +154,51 @@ document.addEventListener('DOMContentLoaded', () => {
       const q = searchInput.value.trim().toLowerCase();
       blogCards.forEach(card => {
         const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-        card.style.display = title.includes(q) ? '' : 'none';
+        card.dataset.filtered = title.includes(q) ? 'true' : 'false';
       });
+      if (typeof showPage === 'function') showPage(1);
     });
+  }
+
+  /* ---------- Blog pagination ---------- */
+  const blogGrid = document.querySelector('.blog-grid');
+  const pagination = document.querySelector('.pagination');
+  if (blogGrid && pagination) {
+    const cards = blogGrid.querySelectorAll('.blog-card');
+    const perPage = 4;
+    const totalPages = Math.ceil(cards.length / perPage);
+    let currentPage = 1;
+
+    function showPage(page) {
+      currentPage = page;
+      const visibleCards = [...cards].filter(c => c.dataset.filtered !== 'false');
+      const totalVisible = visibleCards.length;
+      const totalPagesAdj = Math.ceil(totalVisible / perPage) || 1;
+      visibleCards.forEach((card, i) => {
+        card.style.display = (i >= (page - 1) * perPage && i < page * perPage) ? '' : 'none';
+      });
+      cards.forEach(c => { if (c.dataset.filtered === 'false') c.style.display = 'none'; });
+      pagination.querySelectorAll('.page-num').forEach(btn => {
+        const p = parseInt(btn.dataset.page);
+        btn.style.display = p <= totalPagesAdj ? '' : 'none';
+        btn.classList.toggle('active', p === page);
+      });
+      const prev = pagination.querySelector('.prev');
+      const next = pagination.querySelector('.next');
+      if (prev) prev.disabled = page === 1;
+      if (next) next.disabled = page >= totalPagesAdj;
+    }
+
+    pagination.querySelectorAll('.page-num').forEach(btn => {
+      btn.addEventListener('click', () => showPage(parseInt(btn.dataset.page)));
+    });
+    const prevBtn = pagination.querySelector('.prev');
+    const nextBtn = pagination.querySelector('.next');
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) showPage(currentPage + 1); });
+
+    cards.forEach(c => { if (!c.dataset.filtered) c.dataset.filtered = 'true'; });
+    showPage(1);
   }
 
   /* ---------- Back to top ---------- */
