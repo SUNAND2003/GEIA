@@ -238,6 +238,7 @@ button { font-family: inherit; cursor: pointer; }
 .nav-links a:not(.brand):hover, .nav-links a:not(.brand).active { background: var(--accent); color: var(--primary-dark); }
 
 .nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-book-mobile { display: none; }
 .nav-toggle {
   display: none;
   background: var(--white);
@@ -810,27 +811,32 @@ button { font-family: inherit; cursor: pointer; }
   .trust-badges { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .nav-toggle { display: flex; }
+  .nav-book-desktop { display: none; }
+  .nav-book-mobile { display: block; list-style: none; margin-top: 12px; }
+  .brand { padding-left: 10px; }
+  .nav-toggle { margin-right: 10px; }
   .nav-links {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0; right: 0;
+    top: 0; left: 0;
     height: 100vh;
     width: 280px;
     background: var(--white);
     padding: 80px 24px 24px;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
-    transform: translateX(100%);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.1);
+    transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 300;
-    gap: 4px;
+    gap: 30px;
   }
   .nav.open .nav-links {
     transform: translateX(0);
   }
   .nav-links a { width: 100%; padding: 14px 16px; color: var(--ink); border-radius: 8px; }
+  .nav-links a.btn-gold { color: #fff; background: var(--primary); text-align: center; }
   .nav-links a:hover { background: rgba(5,51,20,0.08); color: var(--primary-dark); }
   .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,0.3); color: var(--primary-dark); box-shadow: none; }
   .nav-links { align-items: stretch; }
@@ -840,6 +846,8 @@ button { font-family: inherit; cursor: pointer; }
   .stats-band { grid-template-columns: repeat(2, 1fr); }
   .hero { padding: 100px 0 80px; min-height: 70vh; }
   .hero-content .hero-copy p.lead { font-size: 1.1rem; }
+  .hero-content { margin-left: 0; }
+  .hero-copy h1 { font-size: 2.4rem; }
 }
 
 @media (max-width: 640px) {
@@ -849,6 +857,9 @@ button { font-family: inherit; cursor: pointer; }
   .trust-badge { padding: 10px 12px; }
   .trust-badge span.label { font-size: 0.75rem; }
   .hero { padding: 80px 0 60px; min-height: 60vh; }
+  .hero-content { margin-left: 0; }
+  .hero-copy h1 { font-size: 2rem; }
+  .hero-content .hero-copy p.lead { font-size: 1rem; }
   .form-row { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid .big { grid-column: span 2; grid-row: span 1; height: 200px; }
