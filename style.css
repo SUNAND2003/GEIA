@@ -801,6 +801,20 @@ button { font-family: inherit; cursor: pointer; }
 .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
 
+/* ---------- Disclosure page ---------- */
+.disclosure-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.disclosure-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; text-align: center; }
+.disclosure-doc-item { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; }
+.disclosure-doc-num {
+  width: 40px; height: 40px; min-width: 40px;
+  border-radius: 10px;
+  background: rgba(5,51,20,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-weight: 700;
+}
+.disclosure-doc-text { flex: 1; font-size: 0.92rem; }
+.disclosure-doc-btn { padding: 6px 18px; font-size: 0.8rem; white-space: nowrap; }
+
 /* ===========================================================
    Responsive
    =========================================================== */
@@ -831,6 +845,7 @@ button { font-family: inherit; cursor: pointer; }
     transition: transform 0.3s ease;
     z-index: 300;
     gap: 30px;
+    overflow-y: auto;
   }
   .nav.open .nav-links {
     transform: translateX(0);
@@ -844,15 +859,23 @@ button { font-family: inherit; cursor: pointer; }
   .featured-article .thumb { min-height: 240px; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .stats-band { grid-template-columns: repeat(2, 1fr); }
+  .disclosure-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .hero { padding: 100px 0 80px; min-height: 70vh; }
   .hero-content .hero-copy p.lead { font-size: 1.1rem; }
   .hero-content { margin-left: 0; }
   .hero-copy h1 { font-size: 2.4rem; }
 }
 
+@media (max-width: 768px) {
+  .disclosure-grid-2 { grid-template-columns: 1fr; }
+  .disclosure-grid-3 { grid-template-columns: 1fr 1fr; }
+  .disclosure-doc-item { flex-wrap: wrap; }
+  .disclosure-doc-btn { width: 100%; justify-content: center; margin-top: 8px; }
+}
+
 @media (max-width: 640px) {
   .section { padding: 56px 0; }
-  .grid-3, .grid-4, .contact-cards { grid-template-columns: 1fr; }
+  .grid-3, .grid-4, .contact-cards, .blog-grid { grid-template-columns: 1fr; }
   .trust-badges { grid-template-columns: 1fr 1fr; gap: 8px; }
   .trust-badge { padding: 10px 12px; }
   .trust-badge span.label { font-size: 0.75rem; }
@@ -873,6 +896,11 @@ button { font-family: inherit; cursor: pointer; }
   .cta-band { padding: 48px 24px; }
   .page-hero { padding: 40px 0 36px; }
   .gallery-grid { grid-auto-rows: 130px; }
+  .disclosure-grid-3 { grid-template-columns: 1fr; }
+  .disclosure-doc-item { flex-direction: column; text-align: center; }
+  .disclosure-doc-item span:first-child { margin: 0 auto; }
+  .disclosure-card { padding: 24px 16px !important; }
+  .disclosure-stat-num { font-size: 1.8rem !important; }
 }
 
 @media (max-width: 420px) {
