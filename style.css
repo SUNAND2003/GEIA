@@ -61,7 +61,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
-  background: var(--bg);
+  background: transparent;
   font-size: 17px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -185,7 +185,7 @@ button { font-family: inherit; cursor: pointer; }
   position: sticky;
   top: 0;
   z-index: 200;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.3);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 2px 20px rgba(0,0,0,0.04);
@@ -227,11 +227,11 @@ button { font-family: inherit; cursor: pointer; }
 }
 .nav-links a {
   font-family: var(--font-head);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   padding: 12px 35px;
   border-radius: 8px;
-  color: var(--ink-soft);
+  color: #000000;
   transition: background 0.2s, color 0.2s;
   position: relative;
 }
@@ -385,6 +385,70 @@ button { font-family: inherit; cursor: pointer; }
 .card-link { font-family: var(--font-head); font-weight: 600; font-size: 0.9rem; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; }
 .card-link svg { width: 16px; height: 16px; transition: transform 0.2s; }
 .service-card:hover .card-link svg { transform: translateX(4px); }
+
+/* ---------- Card background video ---------- */
+.service-card-video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  min-height: 360px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 !important;
+  background: #000;
+}
+.service-card-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.card-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+.card-video-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px 24px;
+  color: #fff;
+}
+.card-video-content h3 { color: #fff; margin-bottom: 10px; }
+.card-video-content p { color: rgba(255,255,255,0.85); margin-bottom: 0; font-size: 0.96rem; }
+.card-video-content .service-icon { margin-bottom: 14px; }
+.service-card-video:hover video { transform: scale(1.05); transition: transform 0.6s ease; }
+
+/* ---------- Programs model grid ---------- */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 360px;
+  gap: 20px;
+}
+.programs-grid .service-card-video:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
+.programs-grid .service-card-video:nth-child(2) { grid-column: 1 / 2; grid-row: 2 / 3; }
+.programs-grid .service-card-video:nth-child(3) { grid-column: 1 / 2; grid-row: 3 / 4; }
+.programs-grid .service-card-video:nth-child(4) { grid-column: 2 / 3; grid-row: 2 / 4; }
+.programs-grid .service-card-video:nth-child(5) { grid-column: 3 / 4; grid-row: 1 / 3; }
+.programs-grid .service-card-video:nth-child(6) { grid-column: 1 / 2; grid-row: 4 / 5; }
+.programs-grid .service-card-video:nth-child(7) { grid-column: 3 / 4; grid-row: 3 / 4; }
+.programs-grid .service-card-video:nth-child(8) { grid-column: 2 / 4; grid-row: 4 / 5; }
+
+/* ---------- Static cards (no video) ---------- */
+.service-card-static {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 24px;
+}
+.service-card-static .service-icon { margin-bottom: 18px; width: 58px; height: 58px; }
+.service-card-static .service-icon svg { width: 28px; height: 28px; }
+.service-card-static h3 { margin-bottom: 10px; color: var(--ink); }
+.service-card-static p { font-size: 0.96rem; margin-bottom: 0; }
 
 /* palette rotation for icons */
 .tone-blue { background: rgba(5,51,20,0.12); color: var(--primary); }
